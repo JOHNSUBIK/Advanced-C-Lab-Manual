@@ -1,213 +1,251 @@
-## EXP NO- 6(A) : C PROGRAM TO DISPLAY STACK ELEMENTS USING LINKED LIST.
+## EXP NO:4(A) C PROGRAM TO SEARCH A GIVEN ELEMENT IN THE GIVEN LINKED LIST.
 ## Aim:
-To write a C program to display stack elements using linked list.
+To write a C program to search a given element in the given linked list.
 
 ## Algorithm:
-1.	Define a structure Node with two members: data to store the integer value and next to point to the next node in the linked list.
-2.	Declare a global variable head representing the starting node of the linked list.
-3.	Define a function display to print the elements of the linked list.
-4.	Declare a pointer p and initialize it with the head of the linked list.
-5.	Use a while loop to traverse the linked list:
-6.	Print the data of the current node.
-7.	Move to the next node using the next pointer.
+1.	Define the structure for a node in a linked list.
+2.	Define the search function to find a specific character in the linked list.
+3.	Initialize the head of the linked list as needed.
+4.	Call the search function and perform other linked list operations as needed.
  
 ## Program:
 ```
-          struct Node
-          {
-          int data;
-          struct Node *next;
-          }*head;
-          void display()
-          {
-          struct Node *p; p=head; while(p!=NULL)
-          {
-          printf("%d\n",p->data); p=p->next;
-          }
-          }
-```
-## Output:
+struct Node{
+struct Node *next; char data;
+}*head;
+void search(char data)
+{
+struct Node *ptr; char item=data; int i=0,flag;
+ptr = head; if(ptr == NULL)
+{
+printf("Empty List\n");
+}
+else
+{
+while (ptr!=NULL)
+{
+if(ptr->data == item)
+{
+printf("item %c found at location %d ",item,i+1); flag=0;
+}
+i++;
+ptr = ptr -> next;
+}
+if(flag!=0)
+{
+printf("Item not found\n");
+}
+}
 
+}
 
-![437307594-ed3fa147-5c7b-4942-a71c-9f2f171134e6](https://github.com/user-attachments/assets/a8a1af1d-222b-440a-ba6c-3ca31023584f)
-
-
-## Result:
-Thus, the program to display stack elements using linked list is verified successfully. 
-
-
-
-## EXP.NO 6(B) : C PROGRAM TO POP AN ELEMENT FROM THE GIVEN STACK USING LINKED LIST.
-## Aim:
-To write a C program to pop an element from the given stack using liked list.
-
-## Algorithm:
-1.	Check for Empty Stack
-2.	If head is equal to NULL, Print "Stack is empty."
-3.	Else Proceed to the next step.
-4.	Set head to point to the next node in the stack.
- 
-## Program:
-```
-          struct Node
-          {
-          int data;
-          struct Node *next;
-          }*head; void pop()
-          {
-          if(head==NULL)
-          {
-          printf("stack is empty");
-          }
-          else
-          {
-          head=head->next;
-          }
-          }
-```
-## Output:
-
-![437307774-edde0fba-5b7e-4521-bc6a-3b66b304543d](https://github.com/user-attachments/assets/3068daed-dfb2-45da-b97e-981059a2fdc6)
-
-
-
-
-
-## Result:
-Thus, the program to pop an element from the given stack using liked list is verified successfully.
-
- 
-## EXP NO:6(C) C PROGRAM TO DISPLAY QUEUE ELEMENTS USING LINKED LIST.
-## Aim:
-To write a C program to display queue elements using linked list.
-## Algorithm:
-1.	Check if Queue is Empty
-2.	Display Queue Elements
-3.	Print the data of the current node pointed to by front
-4.	Update front to point to the next node.
-5.	End the display function.
- 
-## Program:
-```
-
-                   struct Node
-                   {
-                   char data;
-                   struct Node *next;
-                   }*front=NULL,*rear=NULL; 
-                   void display()
-                   {
-                   if(front==NULL)
-                   {
-                   printf("queue is empty");
-                   }
-                   else
-                   {
-                   printf("queue elements:\n"); 
-                   while(front!=NULL)
-                   {
-                   printf("%c\n",front->data); 
-                   front=front->next;
-                   }
-                   }
-                   }
 
 ```
 
 ## Output:
 
 
-![437307978-3bf496e0-95d9-489b-a3a3-09bfbeea94e3](https://github.com/user-attachments/assets/af82331b-ca27-4037-9bc1-a7c4c48afd9f)
+![image](https://github.com/user-attachments/assets/82f002a0-67d3-448b-b9f3-957ae1f09295)
 
 
 ## Result:
-Thus, the program to display queue elements using linked list is verified successfully.
+Thus, the program to search a given element in the given linked list is verified successfully.
 
 
  
-## EXP NO:6(D):  C PROGRAM TO INSERT ELEMENTS IN QUEUE USING LINKED LIST
-
+## EXP NO:4(B)  PROGRAM TO INSERT A NODE IN A LINKED LIST.
 ## Aim:
-To write a C program to insert elements in queue using linked list
-
+To write a C program to insert a node in a linked list.
 ## Algorithm:
-1.	Allocate Memory for New Node
-2.	Set Data and Next Pointer
-3.	Check if Queue is Empty
-4.	Set both front and rear to point to the new node p.
-5.	Set the next pointer of the current rear to point to the new node p.
-6.	End of Enqueue Operation
+1.	Define the structure for a node in a linked list
+2.	Define the insert function to insert a new node with character data at the end of the linked list.
+3.	Initialize the head of the linked list as needed.
+4.	Call the insert function and perform other linked list operations as needed.
  
 ## Program:
-
 ```
-              struct Node
-              {
-              int data;
-              struct Node *next;
-              }*front=NULL,*rear=NULL; 
-              void enqueue(int data)
-              {
-              struct Node *p=(struct Node*)malloc(sizeof(struct Node)); 
-              p->data=data;
-              p->next=NULL; 
-              if(front==NULL)
-              {
-              front=rear=p;
-              }
-              else
-              {
-              rear->next=p; 
-              rear=p;
-              }
-              }
+struct Node{ char data;
+struct Node *next;
+}*head;
+
+void insert(char data)
+{
+struct Node *n=(struct Node*)malloc(sizeof(struct Node)); struct Node *temp;
+if(head==NULL)
+{
+head=n;
+n->data=data; n->next=NULL; temp=head; return;
+}
+while(temp->next!=NULL)
+{
+temp=temp->next;
+}
+n->data=data; n->next=NULL; temp->next=n;
+}
+
 ```
 ## Output:
+![image](https://github.com/user-attachments/assets/5235372e-8e12-4831-8224-c6fe63ba39a8)
 
-![437308197-c7d8a2b4-a8a9-4c1d-8d4a-84adac1cc60c](https://github.com/user-attachments/assets/6cc3b8d2-b580-4f84-ba41-ba20f0efe01d)
+ 
+## Result:
+Thus, the program to insert a node in a linked list is verified successfully.
+
+
+ 
+## EXP NO:4(C) C PROGRAM TO TRAVERSE A DOUBLY LINKED LIST
+## Aim:
+To write a C program to traverse a doubly linked list.
+
+## Algorithm:
+1.	Initialize a temporary pointer (temp) to the head of the list.
+2.	Use a while loop to traverse the list until the end (temp == NULL) is reached.
+3.	Inside the loop, print the data of the current node.
+4.	Move to the next node by updating the temp pointer to point to the next node (temp = temp->next).
+ 
+## Program:
+```
+struct Node
+{
+struct Node *prev; struct Node *next; int data;
+}*head;
+void display()
+{
+struct Node *temp; temp=head; while(temp!=0)
+{
+printf("%d ",temp->data); temp=temp->next;
+}
+
+
+
+}
+
+
+```
+## Output:
+![image](https://github.com/user-attachments/assets/12b1ee51-4bca-46e4-a94f-d9c92b68f549)
 
 
 ## Result:
-Thus, the program to insert elements in queue using linked list is verified successfully.
+Thus, the program to traverse a doubly linked list is verified successfully. 
 
 
 
-## EXP NO:6(E) : C FUNCTION TO FIND THE PEEK OF QUEUE USING LINKED LIST.
+## EXP NO:4(D) C PROGRAM TO INSERT AN ELEMENT IN DOUBLY LINKED LIST
+## Aim:
+To write a C program to insert an element in doubly linked list
+
+## Algorithm:
+1.	Create a new node (newNode) and allocate memory for it.
+2.	Set the data of the new node to the provided value.
+3.	If the list is empty, set the new node as the head.
+4.	If the list is not empty, traverse the list to find the last node.
+5.	Set the new node's prev pointer to the last node and update the last node's next pointer to the new node.
+ 
+## Program:
+```
+struct Node
+{
+struct Node *prev; struct Node *next; float data;
+}*head;
+void insert(float data)
+{
+
+struct Node *n=(struct Node*)malloc(sizeof(struct Node)); struct Node *temp;
+if(head==NULL)
+{
+head=n;
+n->data=data; n->next=NULL; n->prev=NULL; temp=head;
+}
+else
+{
+while(temp->next!=NULL)
+{
+temp=temp->next;
+}
+n->data=data; n->next=NULL; n->prev=temp; temp->next=n;
+}
+
+
+}
+
+
+```
+## Output:
+![image](https://github.com/user-attachments/assets/d348b004-33e1-4cbe-b8bc-6f394120c19d)
+
+
+## Result:
+Thus, the program to insert an element in doubly linked list is verified successfully.
+
+
+
+
+## EXP NO:4(E) C FUNCTION TO DELETE A GIVEN ELEMENT IN THE GIVEN LINKED LIST
+
+
 
 
 ## Aim:
-
-The aim of this function is to retrieve the "peek" (the front element) of a queue implemented using a linked list
+To write a C function that deletes a given element from a linked list.
 
 ## Algorithm:
+1.	Check if the Linked List is Empty:
+o	If the head of the linked list is NULL, print a message indicating the list is empty and exit the function.
+2.	Traverse the Linked List:
+o	Start from the head node and iterate through the list to find the node that contains the given element (data).
+3.	Handle Deletion of the First Node:
+o	If the element to be deleted is found in the head node:
+	Update the head of the linked list to point to the next node (i.e., head = head->next).
+	Free the memory allocated to the node to be deleted.
+	Exit the function.
+4.	Traverse and Delete from the Middle or End:
+o	If the element is not in the head node, continue traversing the list by checking each node’s next pointer.
+o	When the node with the element is found, update the previous node’s next pointer to point to the next node of the node to be deleted (prev->next = current->next).
+o	Free the memory allocated to the node to be deleted.
+5.	Handle the Case when the Element is Not Found:
+o	If the element is not found in any node, print a message indicating the element is not present in the list.
+6.	End the Function.
 
-1.	Check if the queue is empty:
-o	If the queue is empty (i.e., the front pointer is NULL), return an error or a message indicating that the queue is empty.
-2.	Access the front element:
-o	If the queue is not empty, return the data stored in the front node of the linked list (i.e., the element at the head of the queue).
 
 ## Program:
 ```
+struct Node{
+    char data; 
+    struct Node *next;
+}*head;
+void delete()
+{
+    if(head==NULL){
+        printf("List is empty\n");
+        return;
+    }
+    else if(head->next==NULL){
+        head=NULL;
+        free(head);
+        printf("Node deleted from the begining ...\n");
+    }
+    else{
+        struct Node *ptr;
+        ptr=head;
+        head=head->next;
+        free(ptr);
+        printf("Node deleted from the begining ...\n");
+    }
+}
 
-              struct Node
-              {
-                 char data;
-                 struct Node *next;
-              }*front=NULL,*rear=NULL;
-              void peek()
-              {
-              printf("%c",front->data);
-              }
+
 ```
 ## Output:
+![image](https://github.com/user-attachments/assets/56157a63-71cf-45e1-bdda-d7aa23a09278)
 
 
-
-![437308442-bea488b0-ba1b-486c-a771-6b9e1f56f319](https://github.com/user-attachments/assets/a6143772-4fe6-4d53-8f28-eb071c67fc71)
 
 
 ## Result:
+Thus, the function that deletes a given element from a linked list is verified successfully.
 
-Thus, the program to retrieve the "peek" (the front element) of a queue implemented using a linked list is verified successfully.
+
+
 
 
